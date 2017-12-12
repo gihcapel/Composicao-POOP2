@@ -1,25 +1,43 @@
 package entity;
 
+/**
+ * 
+ * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
+ *
+ * Classe para trabalhar com vagões
+ */
 public class Vagao {
 
+    //Componentes da classe vagão
+    String tipo, subtipo, bitola, proprietario;
+    private Long id;
+    private String pesoMax;
+    String comprimento;
+    String bitolaMetro;
 
-		String tipo, subtipo, bitola, proprietario;
-		private Long id;
-		public Long getId() {
-	        return id;
-	    }
-	    public void setId(Long id) {
-	        this.id = id;
-	    }
-		private String pesoMax;
-		String comprimento;
-		String bitolaMetro;
-		public enum ListaTipos {
-		       G, P, T, F, I, H, A, C;
-		} 
-		
-		public void setSubtipo(String subtipo) {
-			/*for(ListaTipos lt : ListaTipos.values()){
+    //Obtém Id
+    public Long getId() {
+        return id;
+    }
+
+    //Insere Id
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //Método que lista todos os tipos de vagões que podem existir
+    public enum ListaTipos {
+        G, P, T, F, I, H, A, C;
+    }
+
+    //Obtém subtipo
+    public String getSubtipo() {
+        return subtipo;
+    }
+
+    //Insere o subtipo
+    public void setSubtipo(String subtipo) {
+        /*for(ListaTipos lt : ListaTipos.values()){
 				if(lt.equals(ListaTipos.G)){
 		            if(subtipo=="D" || subtipo=="P" || subtipo=="F" || subtipo=="M" || subtipo=="T" || subtipo=="S" || subtipo=="H" || subtipo=="C" || subtipo=="B" || subtipo=="N" || subtipo=="Q") {
 					this.subtipo = subtipo;	
@@ -70,70 +88,79 @@ public class Vagao {
 		 	         }
 		        }	
 			}*/
-			this.subtipo=subtipo;
-		}
-		
-		
-		public String getTipo() {
-			return tipo;
-		}
+        this.subtipo = subtipo;
+    }
 
-		public void setTipo(String tipo) {
-			this.tipo = tipo;
-		}
+    //Obtém o tipo
+    public String getTipo() {
+        return tipo;
+    }
 
-		public String getBitola() {
-			return bitola;
-		}
+    //Insere o tipo
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
-		public void setBitola(String bitola) {
-			this.bitola = bitola;
-		}
+    //Obtém a bitola
+    public String getBitola() {
+        return bitola;
+    }
 
-		public String getPesoMax() {
-			return pesoMax;
-		}
+    //Insere a bitola
+    public void setBitola(String bitola) {
+        this.bitola = bitola;
+    }
 
-		public void setPesoMax(String pesoMax) {
-			this.pesoMax = pesoMax;
-		}
+    //Obtém peso máximo
+    public String getPesoMax() {
+        return pesoMax;
+    }
 
-		public String getBitolaMetro() {
-			return bitolaMetro;
-		}
+    //Insere peso máximo
+    public void setPesoMax(String pesoMax) {
+        this.pesoMax = pesoMax;
+    }
 
-		public void setBitolaMetro(String bitolaMetro) {
-			this.bitolaMetro = bitolaMetro;
-		}
+    //Obtém tamanho da bitola
+    public String getBitolaMetro() {
+        return bitolaMetro;
+    }
 
-		public String getComprimento() {
-			return comprimento;
-		}
+    //Insere tamanho da bitola
+    public void setBitolaMetro(String bitolaMetro) {
+        this.bitolaMetro = bitolaMetro;
+    }
 
-		public void setComprimento(String comprimento) {
-			this.comprimento = comprimento;
-		}
+    //Obtém comprimento
+    public String getComprimento() {
+        return comprimento;
+    }
 
-		public String getSubtipo() {
-			return subtipo;
-		}
+    //Insere comprimento
+    public void setComprimento(String comprimento) {
+        this.comprimento = comprimento;
+    }
 
-	
-		public Vagao() {
-		}
-		public String getProprietario() {
-			return proprietario;
-		}
-		public void setProprietario(String proprietario) {
-			this.proprietario = proprietario;
-		}
-		@Override
-		public String toString() {
-			return "Vagao [tipo=" + tipo + ", subtipo=" + subtipo + ", bitola=" + bitola + ", proprietario="
-					+ proprietario + ", id=" + id + ", pesoMax=" + pesoMax + ", bitolaMetro=" + bitolaMetro
-					+ ", comprimento=" + comprimento + "]";
-		}
-		
-	
-    
+    //Obtém proprietário
+    public String getProprietario() {
+        return proprietario;
+    }
+
+    //Insere proprietário
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    //Imprime componentes da classe
+    @Override
+    public String toString() {
+        return "Vagao [tipo=" + tipo + ", subtipo=" + subtipo + ", bitola=" + bitola + ", proprietario="
+                + proprietario + ", id=" + id + ", pesoMax=" + pesoMax + ", bitolaMetro=" + bitolaMetro
+                + ", comprimento=" + comprimento + "]";
+    }
+
+    //Construtor vazio e não parametrizado
+    public Vagao() {
+    }
+
 }

@@ -1,4 +1,5 @@
 package dao;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,24 +8,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 
+ * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
+ *
+ * Classe para pegar todas as informações sobre os vagões do banco de dados,
+ * implementando a interface IVagaoDAO
+ */
 import entity.Vagao;
 
 public class VagaoDAO implements IVagaoDAO {
 
-    private static final String SQL_INSERT =
-            "insert into vagoestable (tipo, subtipo, bitola, proprietario, bitolametro, comprimento, pesomax) values (?,?,?,?,?,?,?)";
+    private static final String SQL_INSERT
+            = "insert into vagoestable (tipo, subtipo, bitola, proprietario, bitolametro, comprimento, pesomax) values (?,?,?,?,?,?,?)";
 
-    private static final String SQL_UPDATE =
-            "update vagoestable set tipo = ?, subtipo = ?, bitola = ?, proprietario=?, bitolametro=?, comprimento=?, pesomax=? where id = ?";
+    private static final String SQL_UPDATE
+            = "update vagoestable set tipo = ?, subtipo = ?, bitola = ?, proprietario=?, bitolametro=?, comprimento=?, pesomax=? where id = ?";
 
-    private static final String SQL_REMOVE =
-            "delete from vagoestable where ID = ?";
+    private static final String SQL_REMOVE
+            = "delete from vagoestable where ID = ?";
 
-    private static final String SQL_FIND_ALL =
-            "select * from vagoestable";
+    private static final String SQL_FIND_ALL
+            = "select * from vagoestable";
 
-
+    //Método para salvar o vagão instanciado
+    //com conexão do banco de dados e tratamento de exceções
     public int save(Vagao vagao) {
         Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
@@ -46,7 +54,7 @@ public class VagaoDAO implements IVagaoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
@@ -54,8 +62,10 @@ public class VagaoDAO implements IVagaoDAO {
         return result;
     }
 
+    //Método para atualizar o vagão instanciado
+    //com conexão do banco de dados e tratamento de exceções
     public int update(Vagao vagao) {
-        Connection conn =  Connect.getConnection();
+        Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
         try {
@@ -76,7 +86,7 @@ public class VagaoDAO implements IVagaoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
@@ -84,8 +94,10 @@ public class VagaoDAO implements IVagaoDAO {
         return result;
     }
 
+    //Método para remover o vagão instanciado
+    //com conexão do banco de dados e tratamento de exceções
     public int remove(Long id) {
-        Connection conn =  Connect.getConnection();
+        Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
         try {
@@ -99,7 +111,7 @@ public class VagaoDAO implements IVagaoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
@@ -107,6 +119,8 @@ public class VagaoDAO implements IVagaoDAO {
         return result;
     }
 
+    //Método para achar todas os vagões dentro da lista
+    //utilizando um array, com conexão de banco de dados e tratamento de exceções
     public List<Vagao> findAll() {
         Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
@@ -133,14 +147,14 @@ public class VagaoDAO implements IVagaoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Connect.close(conn, pstm, rs);
             }
             e.printStackTrace();
         }
-      
+
         return vagoes;
-        
+
     }
 }
 

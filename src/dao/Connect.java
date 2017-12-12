@@ -1,6 +1,13 @@
 package dao;
+
 import java.sql.*;
 
+/**
+ * 
+ * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
+ *
+ * Classe para conectar o projeto com banco de dados
+ */
 public class Connect {
 
     private static final String URL_MYSQL = "jdbc:mysql://localhost/cdcol";
@@ -8,6 +15,7 @@ public class Connect {
     private static final String USER = "root";
     private static final String PASS = "";
 
+    //MÃ©todo para obter a conexÃ£o
     public static Connection getConnection() {
         System.out.println("Conectando ao Banco de Dados");
         try {
@@ -21,6 +29,7 @@ public class Connect {
         return null;
     }
 
+    //MÃ©todo para fechar a conexÃ£o
     public static void close(Connection conn, PreparedStatement stmt, ResultSet rs) {
         try {
             if (conn != null) {
@@ -39,30 +48,32 @@ public class Connect {
         }
     }
 
+    //MÃ©todo para criar as tabelas de vagÃµes e locomotivas 
+    //de acordo com o que estÃ¡ salvo no banco de dados
     public static void createTable() {
         Connection connection = getConnection();
         PreparedStatement stmt = null;
-        String sql = "CREATE TABLE IF NOT EXISTS `vagoestable` (\n" +
-                "  `id` bigint(20) NOT NULL AUTO_INCREMENT,\n" +
-                "  `tipo` varchar(50) NOT NULL,\n" +
-                "  `subtipo` varchar(50) NOT NULL,\n" +
-                "  `bitola` varchar(50) NOT NULL,\n" +
-                "  `proprietario` varchar(50) NOT NULL,\n" +
-                "  `bitolametro` varchar(50) NOT NULL,\n" +
-                "  `comprimento` varchar(50) NOT NULL,\n" +
-                "  `pesomax` varchar(50) NOT NULL,\n" +
-                "  PRIMARY KEY (`ID`)\n" +
-                ")";
-        String sql2= "CREATE TABLE IF NOT EXISTS `locomotivas` (\n" +
-                "  `id` bigint(20) NOT NULL AUTO_INCREMENT,\n" +
-                "  `classe` varchar(50) NOT NULL,\n" +
-                "  `descricao` varchar(50) NOT NULL,\n" +
-                "  `pesomaxreboc` varchar(50) NOT NULL,\n" +
-                "  `pesomaxloc` varchar(50) NOT NULL,\n" +
-                "  `bitola` varchar(50) NOT NULL,\n" +
-                "  `comprimento` varchar(50) NOT NULL,\n" +
-                "  PRIMARY KEY (`id`)\n" +
-                ")";
+        String sql = "CREATE TABLE IF NOT EXISTS `vagoestable` (\n"
+                + "ï¿½ `id` bigint(20) NOT NULL AUTO_INCREMENT,\n"
+                + "ï¿½ `tipo` varchar(50) NOT NULL,\n"
+                + "ï¿½ `subtipo` varchar(50) NOT NULL,\n"
+                + "ï¿½ `bitola` varchar(50) NOT NULL,\n"
+                + "ï¿½ `proprietario` varchar(50) NOT NULL,\n"
+                + "ï¿½ `bitolametro` varchar(50) NOT NULL,\n"
+                + "ï¿½ `comprimento` varchar(50) NOT NULL,\n"
+                + "ï¿½ `pesomax` varchar(50) NOT NULL,\n"
+                + "ï¿½ PRIMARY KEY (`ID`)\n"
+                + ")";
+        String sql2 = "CREATE TABLE IF NOT EXISTS `locomotivas` (\n"
+                + "ï¿½ `id` bigint(20) NOT NULL AUTO_INCREMENT,\n"
+                + "ï¿½ `classe` varchar(50) NOT NULL,\n"
+                + "ï¿½ `descricao` varchar(50) NOT NULL,\n"
+                + "ï¿½ `pesomaxreboc` varchar(50) NOT NULL,\n"
+                + "ï¿½ `pesomaxloc` varchar(50) NOT NULL,\n"
+                + "ï¿½ `bitola` varchar(50) NOT NULL,\n"
+                + "ï¿½ `comprimento` varchar(50) NOT NULL,\n"
+                + "ï¿½ PRIMARY KEY (`id`)\n"
+                + ")";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.execute();

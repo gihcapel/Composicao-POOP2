@@ -1,5 +1,4 @@
 package dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,29 +9,33 @@ import java.util.List;
 import entity.Locomotiva;
 
 /**
- * 
- * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
- *
- * Classe para pegar todas as informaÃ§Ãµes sobre as locomotivas do banco de
- * dados, implementando a interface ILocomotivaDAO
- */
+* 
+* @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
+*
+* Classe para pegar todas as informações sobre as locomotivas do banco de
+* dados, implementando a interface ILocomotivaDAO
+*/
+
 public class LocomotivaDAO implements ILocomotivaDAO {
 
-    private static final String SQL_INSERT
-            = "insert into locomotivas (classe, descricao, pesomaxreboc, pesomaxloc, bitola, comprimento) values (?,?,?,?,?,?)";
+    private static final String SQL_INSERT =
+            "insert into locomotivas (classe, descricao, pesomaxreboc, pesomaxloc, bitola, comprimento) values (?,?,?,?,?,?)";
 
-    private static final String SQL_UPDATE
-            = "update locomotivas set classe = ?, descricao = ?, pesomaxreboc = ?, pesomaxloc =?, bitolaloc=?, comprimentoloc=? where ID = ?";
+    private static final String SQL_UPDATE =
+            "update locomotivas set classe = ?, descricao = ?, pesomaxreboc = ?, pesomaxloc =?, bitolaloc=?, comprimentoloc=? where ID = ?";
 
-    private static final String SQL_REMOVE
-            = "delete from locomotivas where ID = ?";
+    private static final String SQL_REMOVE =
+            "delete from locomotivas where ID = ?";
 
-    private static final String SQL_FIND_ALL
-            = "select * from locomotivas";
+    private static final String SQL_FIND_ALL =
+            "select * from locomotivas";
 
-    //MÃ©todo para salvar a locomotiva instanciada
-    //com conexÃ£o do banco de dados e tratamento de exceÃ§Ãµes
+  /**Método para salvar a locomotiva instanciada
+   * com conexão do banco de dados e tratamento de exceções
+   */
     public int save(Locomotiva locomotiva) {
+    	ArrayListLocomotiva locomotivasdisponiveis;
+    	locomotivasdisponiveis= ArrayListLocomotiva.getInstance();
         Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
@@ -45,6 +48,7 @@ public class LocomotivaDAO implements ILocomotivaDAO {
             pstm.setString(5, locomotiva.getBitolaLoc());
             pstm.setString(6, locomotiva.getComprimentoLoc());
             result = pstm.executeUpdate();
+            locomotivasdisponiveis.add(locomotiva);
         } catch (SQLException e) {
             try {
                 if (conn != null) {
@@ -52,18 +56,18 @@ public class LocomotivaDAO implements ILocomotivaDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            } finally {
+            }  finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
         }
         return result;
     }
-
-    //MÃ©todo para atualizar a locomotiva instanciada
-    //com conexÃ£o do banco de dados e tratamento de exceÃ§Ãµes
+  /**Método para atualizar a locomotiva instanciada
+   * com conexão do banco de dados e tratamento de exceções
+   */
     public int update(Locomotiva locomotiva) {
-        Connection conn = Connect.getConnection();
+        Connection conn =  Connect.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
         try {
@@ -83,18 +87,19 @@ public class LocomotivaDAO implements ILocomotivaDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            } finally {
+            }  finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
         }
         return result;
     }
-
-    //MÃ©todo para remover a locomotiva instanciada
-    //com conexÃ£o do banco de dados e tratamento de exceÃ§Ãµes
+    
+  /**Método para remover a locomotiva instanciada
+   * com conexão do banco de dados e tratamento de exceções
+   */
     public int remove(Long id) {
-        Connection conn = Connect.getConnection();
+        Connection conn =  Connect.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
         try {
@@ -108,16 +113,16 @@ public class LocomotivaDAO implements ILocomotivaDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            } finally {
+            }  finally {
                 Connect.close(conn, pstm, null);
             }
             e.printStackTrace();
         }
         return result;
     }
-
-    //MÃ©todo para achar todas as locomotivas dentro da lista
-    //utilizando um array, com conexÃ£o de banco de dados e tratamento de exceÃ§Ãµes
+  /**Método para achar todas as locomotivas dentro da lista
+   * utilizando um array, com conexão de banco de dados e tratamento de exceções
+   */
     public List<Locomotiva> findAll() {
         Connection conn = Connect.getConnection();
         PreparedStatement pstm = null;
@@ -144,13 +149,13 @@ public class LocomotivaDAO implements ILocomotivaDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            } finally {
+            }  finally {
                 Connect.close(conn, pstm, rs);
             }
             e.printStackTrace();
         }
         return locomotivas;
     }
+    
 }
-
 

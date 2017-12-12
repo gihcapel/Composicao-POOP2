@@ -10,7 +10,7 @@ import java.util.List;
  * 
  * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
  *
- * Classe que cria uma tabela para armazenar os vag√µes
+ * Classe que cria uma tabela para armazenar os vagıes
  */
 public class VagaoTableModel extends AbstractTableModel {
 
@@ -22,22 +22,22 @@ public class VagaoTableModel extends AbstractTableModel {
     private static final int COL_PROPRIETARIO = 4;
     private List<Vagao> valores;
 
-    //Construtor parametrizado com a lista de vag√µes
+    //Construtor parametrizado com a lista de vagıes
     public VagaoTableModel(List<Vagao> valores) {
         this.valores = valores;
     }
 
-    //Obt√©m a quantidade de linhas
+    //ObtÈm a quantidade de linhas
     public int getRowCount() {
         return valores.size();
     }
 
-    //Obt√©m a quantidade de colunas
+    //ObtÈm a quantidade de colunas
     public int getColumnCount() {
         return 5;
     }
 
-    //M√©todo que instancia vag√£o e obt√©m as informa√ß√µes de acordo com a coluna
+    //MÈtodo que instancia vag„o e obtÈm as informaÁıes de acordo com a coluna
     public Object getValueAt(int rowIndex, int columnIndex) {
         Vagao Vagao = valores.get(rowIndex);
         if (columnIndex == COL_ID) {
@@ -55,13 +55,13 @@ public class VagaoTableModel extends AbstractTableModel {
         return null;
     }
 
-    //M√©todo que obt√©m o nome da coluna
+    //MÈtodo que obtÈm o nome da coluna
     @Override
     public String getColumnName(int column) {
         String coluna = "";
         switch (column) {
             case COL_ID:
-                coluna = "C√≥digo";
+                coluna = "CÛdigo";
                 break;
             case COL_TIPO:
                 coluna = "TIPO";
@@ -76,12 +76,12 @@ public class VagaoTableModel extends AbstractTableModel {
                 coluna = "PROPRIETARIO";
                 break;
             default:
-                throw new IllegalArgumentException("Coluna inv√°lida!");
+                throw new IllegalArgumentException("Coluna inv·lida!");
         }
         return coluna;
     }
 
-    //M√©todo que obt√©m a classe referente √† coluna
+    //MÈtodo que obtÈm a classe referente ‡ coluna
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         if (columnIndex == COL_ID) {
@@ -98,7 +98,7 @@ public class VagaoTableModel extends AbstractTableModel {
         return null;
     }
 
-    //M√©todo que obt√©m os valores na linha
+    //MÈtodo que obtÈm os valores na linha
     public Vagao get(int row) {
         return valores.get(row);
     }

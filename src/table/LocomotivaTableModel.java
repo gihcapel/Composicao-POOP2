@@ -29,17 +29,17 @@ public class LocomotivaTableModel extends AbstractTableModel {
         this.valores = valores;
     }
 
-    //ObtÃ©m a quantidade de linhas
+    //Obtém a quantidade de linhas
     public int getRowCount() {
         return valores.size();
     }
 
-    //ObtÃ©m a quantidade de colunas
+    //Obtém a quantidade de colunas
     public int getColumnCount() {
         return 7;
     }
 
-    //MÃ©todo que instancia locomotiva e obtÃ©m as informaÃ§Ãµes de acordo com a coluna
+    //Método que instancia locomotiva e obtém as informações de acordo com a coluna
     public Object getValueAt(int rowIndex, int columnIndex) {
         Locomotiva Locomotiva = valores.get(rowIndex);
         if (columnIndex == COL_ID) {
@@ -60,19 +60,19 @@ public class LocomotivaTableModel extends AbstractTableModel {
         return null;
     }
 
-    //MÃ©todo que obtÃ©m o nome da coluna
+    //Método que obtém o nome da coluna
     @Override
     public String getColumnName(int column) {
         String coluna = "";
         switch (column) {
             case COL_ID:
-                coluna = "Cï¿½digo";
+                coluna = "Código";
                 break;
             case COL_CLASSE:
                 coluna = "Classe";
                 break;
             case COL_DESCRICAO:
-                coluna = "Descriï¿½ï¿½o";
+                coluna = "Descrição";
                 break;
             case COL_PESOMAXREBOC:
                 coluna = "PESO";
@@ -87,12 +87,12 @@ public class LocomotivaTableModel extends AbstractTableModel {
                 coluna = "COMPRIMENTO";
                 break;
             default:
-                throw new IllegalArgumentException("Coluna invï¿½lida!");
+                throw new IllegalArgumentException("Coluna inválida!");
         }
         return coluna;
     }
 
-    //MÃ©todo que obtÃ©m a classe referente Ã  coluna
+    //Método que obtém a classe referente à coluna
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         if (columnIndex == COL_ID) {
@@ -113,7 +113,7 @@ public class LocomotivaTableModel extends AbstractTableModel {
         return null;
     }
 
-    //MÃ©todo que obtÃ©m os valores na linha
+    //Método que obtém os valores na linha
     public Locomotiva get(int row) {
         return valores.get(row);
     }

@@ -12,7 +12,7 @@ public class Locomotiva {
     private Long id;
     private String classe, descricao, pesoMaxRebocavel, pesoMaxLoc, bitolaLoc, comprimentoLoc;
 
-    //Obt√©m Id
+    //ObtÈm Id
     public Long getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class Locomotiva {
         this.id = id;
     }
 
-    //Obt√©m classe
+    //ObtÈm classe
     public String getClasse() {
         return classe;
     }
@@ -32,37 +32,37 @@ public class Locomotiva {
         this.classe = classe;
     }
 
-    //Obt√©m descri√ß√£o
+    //ObtÈm descriÁ„o
     public String getDescricao() {
         return descricao;
     }
 
-    //Insere descri√ß√£o
+    //Insere descriÁ„o
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    //Obt√©m peso m√°ximo reboc√°vel
+    //ObtÈm peso m·ximo reboc·vel
     public String getPesoMaxRebocavel() {
         return pesoMaxRebocavel;
     }
 
-    //Insere peso m√°ximo reboc√°vel
+    //Insere peso m·ximo reboc·vel
     public void setPesoMaxRebocavel(String pesoMaxRebocavel) {
         this.pesoMaxRebocavel = pesoMaxRebocavel;
     }
 
-    //Obt√©m peso m√°ximo da locomotiva
+    //ObtÈm peso m·ximo da locomotiva
     public String getPesoMaxLoc() {
         return pesoMaxLoc;
     }
 
-    //Insere peso m√°ximo da locomotiva
+    //Insere peso m·ximo da locomotiva
     public void setPesoMaxLoc(String pesoMaxLoc) {
         this.pesoMaxLoc = pesoMaxLoc;
     }
 
-    //Obt√©m bitola da locomotiva
+    //ObtÈm bitola da locomotiva
     public String getBitolaLoc() {
         return bitolaLoc;
     }
@@ -72,7 +72,7 @@ public class Locomotiva {
         this.bitolaLoc = bitolaLoc;
     }
 
-    //Obt√©m comprimento
+    //ObtÈm comprimento
     public String getComprimentoLoc() {
         return comprimentoLoc;
     }
@@ -82,7 +82,7 @@ public class Locomotiva {
         this.comprimentoLoc = comprimentoLoc;
     }
 
-    //Construtor vazio e n√£o parametrizado
+    //Construtor vazio e n„o parametrizado
     public Locomotiva() {
     }
 

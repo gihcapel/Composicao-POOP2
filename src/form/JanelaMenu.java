@@ -1,4 +1,15 @@
 package form;
+import java.awt.*;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.swing.*;
+
+import dao.ArrayListLocomotiva;
+import dao.ArrayListVagao;
+import entity.Composicao;
+
 
 import java.awt.*;
 import java.awt.GridLayout;
@@ -11,12 +22,12 @@ import javax.swing.*;
  *
  * Classe da janela de menu
  *
- * A classe cont√©m bot√µes que abrem o cadastro de locomotivas, cadastro de
- * vag√µes e cadastro de composi√ß√µes
+ * A classe contÈm botıes que abrem o cadastro de locomotivas, cadastro de
+ * vagıes e cadastro de composiÁıes
  */
 public class JanelaMenu extends JFrame {
 
-    //Um novo painel que deve conter as informa√ß√µes √© criado dentro da janela
+    //Um novo painel que deve conter as informaÁıes È criado dentro da janela
     JPanel painel = new JPanel();
 
     //Componentes da classe JanelaMenu
@@ -25,26 +36,26 @@ public class JanelaMenu extends JFrame {
     public JanelaMenu() {
         super("Menu");
 
-        //Bot√µes do menu
+        //Botıes do menu
         btnCadastrarLocomotiva = new JButton("Locomotivas");
-        btnCadastrarVagao = new JButton("Vag√µes");
-        btnCadastrarComposicao = new JButton("Composi√ß√µes");
+        btnCadastrarVagao = new JButton("Vagıes");
+        btnCadastrarComposicao = new JButton("ComposiÁıes");
 
-        painel.setLayout(new GridLayout(7, 2, 5, 5)); //painel com 7 linhas, 2 colunas e 5 de dist√¢ncia 
+        painel.setLayout(new GridLayout(7, 2, 5, 5)); //painel com 7 linhas, 2 colunas e 5 de dist‚ncia 
         painel.setBackground(Color.WHITE); //Fundo branco
 
-        //Bot√µes s√£o adicionados no painel
+        //Botıes s„o adicionados no painel
         painel.add(btnCadastrarLocomotiva);
         painel.add(btnCadastrarVagao);
         painel.add(btnCadastrarComposicao);
         pack();
 
-        //Propriedades da janela como bot√£o para fechar e redimensionamento
+        //Propriedades da janela como bot„o para fechar e redimensionamento
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(painel);
 
-        //M√©todos que adicionam a√ß√µes aos bot√µes
+        //MÈtodos que adicionam aÁıes aos botıes
         btnCadastrarLocomotiva.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,19 +73,55 @@ public class JanelaMenu extends JFrame {
                 v.setVisible(true);
             }
         });
-
-        /*btnCadastrarComposicao.addActionListener(new java.awt.event.ActionListener(){
-				@Override
+        btnCadastrarComposicao.addActionListener(new java.awt.event.ActionListener(){
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					JanelaComposicao c = new JanelaComposicao();
-					c.setVisible(true);
-					c.setSize(680,480);
-					c.setLocation(300,300);
-
+					ArrayList vagoesselecionados = new ArrayList();
+					ArrayList locomotivasselecionadas = new ArrayList();
+					ArrayListVagao vagoesdisponiveis;
+			    	vagoesdisponiveis= ArrayListVagao.getInstance();
+			    	ArrayList locomotivasaleatorias = new ArrayList();
+			    	ArrayListLocomotiva locomotivasdisponiveis;
+			    	locomotivasdisponiveis= ArrayListLocomotiva.getInstance();
+			    	int qtdvagao, qtdlocomotiva, i=2, p=1;
+			    	Scanner t= new Scanner (System.in);
+			    	System.out.println("Quantos vagıes vocÍ deseja?");
+			    	qtdvagao= t.nextInt();
+			    	System.out.println("Esses s„o os vagıes disponiveis");
+			    	System.out.println(vagoesdisponiveis.toString());
+			    	System.out.println("Escolha o vag„o");
+			    	int vagaoindex= t.nextInt();
+			    	String bitola= vagoesdisponiveis.getVagoesdisponiveis().get(vagaoindex).getBitola();
+			    	while (i<qtdvagao){
+			    		System.out.println("Escolha o vag„o");
+			    		int vagaoindexdois= t.nextInt();
+			    		if(vagoesdisponiveis.getVagoesdisponiveis().get(vagaoindexdois).getBitola() == bitola){
+			    		vagoesselecionados.add(vagoesdisponiveis.getVagoesdisponiveis().get(vagaoindexdois));
+			    		i++;
+			    		}
+			    		else 
+			    			System.out.println("Vagoes devem possuir a mesma bitola");
+			    	}
+			    	System.out.println("Quantas locomotivas vocÍ deseja?");
+			    	qtdlocomotiva= t.nextInt();
+			    	System.out.println("Essas s„o as locomotivas disponiveis");
+			    	System.out.println(locomotivasdisponiveis.toString());
+			    	while (p<qtdlocomotiva){
+			    		System.out.println("Escolha o vag„o");
+			    		int locomotivaindexdois= t.nextInt();
+			    		if(locomotivasdisponiveis.getLocomotivasdisponiveis().get(locomotivaindexdois).getBitolaLoc()== bitola){
+			    		locomotivasselecionadas.add(locomotivasdisponiveis.getLocomotivasdisponiveis().get(locomotivaindexdois));
+			    		p++;
+			    	}
+			    		else
+			    			System.out.println("Locomotivas devem possuir a mesma bitola");
+			    	
+				} 
+			    	Composicao composicao= new Composicao(locomotivasselecionadas, vagoesselecionados);
+			    	System.out.println(composicao);
 				}                            
 			});
-		}*/
-    }
+		}
 }
+
 
 

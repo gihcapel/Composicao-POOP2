@@ -12,7 +12,7 @@ import java.awt.*;
  */
 public class LocomotivaCellRenderer extends DefaultTableCellRenderer {
 
-    //ObtÃ©m os componentes do render da tabela, dando instruÃ§Ãµes de cor e tamanho
+    //Obtém os componentes do render da tabela, dando instruções de cor e tamanho
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

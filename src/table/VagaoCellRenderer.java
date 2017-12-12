@@ -8,11 +8,11 @@ import java.awt.*;
  * 
  * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
  *
- * Classe que renderiza a tabela de vagÃµes
+ * Classe que renderiza a tabela de vagões
  */
 public class VagaoCellRenderer extends DefaultTableCellRenderer {
 
-    //ObtÃ©m os componentes do render da tabela, dando instruÃ§Ãµes de cor e tamanho
+    //Obtém os componentes do render da tabela, dando instruções de cor e tamanho
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
@@ -22,7 +22,7 @@ public class VagaoCellRenderer extends DefaultTableCellRenderer {
         } else {
             setBackground(null);
         }
-
+        //deixa verde a linha selecionada
         if (isSelected) {
             setBackground(Color.GREEN);
         }

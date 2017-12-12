@@ -8,19 +8,19 @@ import entity.Vagao;
  * 
  * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
  *
- * Interface para abstrair o acesso aos dados dos vag√µes, encapsulando os mesmos
+ * Interface para abstrair o acesso aos dados dos vagıes, encapsulando os mesmos
  */
 public interface IVagaoDAO {
 
-    //Salva o vag√£o instanciado
+    //Salva o vag„o instanciado
     int save(Vagao vagao);
 
-    //Atualiza o vag√£o instanciado
+    //Atualiza o vag„o instanciado
     int update(Vagao vagao);
 
-    //Remove o vag√£o
+    //Remove o vag„o
     int remove(Long id);
 
-    //Acha todos os vag√µes inseridos na lista
+    //Acha todos os vagıes inseridos na lista
     List<Vagao> findAll();
 }

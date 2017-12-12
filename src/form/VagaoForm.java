@@ -21,7 +21,7 @@ public class VagaoForm extends JFrame {
     private JLabel lbTipo, lbSubtipo, lbBitola, lbBitolaMetro, lbComprimento, lbPesoMax, lbProprietario;
     private JTextField txtTipo, txtSubtipo, txtBitola, txtBitolaMetro, txtComprimento, txtPesoMax, txtProprietario;;
     private JPanel panelAdd, panelTable, panelButtons;
-    private JButton btnNew, btnSave, btnUpdate, btnRemove, btnCancel;
+    private JButton btnNew, btnSave, btnUpdate, btnRemove, btnCancel,btnValidate;
     private JTable table;
     private JScrollPane scrollPane;
 
@@ -93,12 +93,14 @@ public class VagaoForm extends JFrame {
         btnCancel = new JButton("Cancelar");
         btnRemove = new JButton("Remover");
         btnUpdate = new JButton("Atualizar");
+		btnValidate = new JButton("Validar");
 
         panelButtons.add(btnNew, "gapleft 10");
         panelButtons.add(btnCancel);
         panelButtons.add(btnSave, "gap unrelated");
         panelButtons.add(btnUpdate, "gap unrelated");
         panelButtons.add(btnRemove);
+        panelButtons.add(btnValidate);
 
         panelTable = new JPanel(new MigLayout());
         panelTable.setBorder(BorderFactory.createTitledBorder("Lista de Vagaos"));
@@ -146,6 +148,11 @@ public class VagaoForm extends JFrame {
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onAlterarVagao();
+            }
+        });
+		btnValidate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onValidate();
             }
         });
     }
@@ -201,24 +208,79 @@ public class VagaoForm extends JFrame {
     private void onNovoVagao() {
         enableFields(true);
     }
-
+	private void onValidate(){
+		if (txtTipo.getText().length() > 0 && txtSubtipo.getText().length() > 0 && txtBitola.getText().length() > 0) {
+		String tipos = "GPTFIHAC";
+		if(tipos.indexOf(txtTipo.getText().charAt(0))!=-1){
+				if(txtTipo.getText().equals("G")){
+						if(!txtSubtipo.getText().equals("D") || !txtSubtipo.getText().equals("P") || !txtSubtipo.getText().equals("F") || !txtSubtipo.getText().equals("M") || !txtSubtipo.getText().equals("T") || !txtSubtipo.getText().equals("S") || !txtSubtipo.getText().equals("H") || !txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("B") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+						JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						}else {
+							JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						}
+					}else if(txtTipo.getText().equals("P")){
+						 if(!txtSubtipo.getText().equals("M") || !txtSubtipo.getText().equals("E") || !txtSubtipo.getText().equals("D") || !txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("R") || !txtSubtipo.getText().equals("T") || !txtSubtipo.getText().equals("G") || !txtSubtipo.getText().equals("P") || !txtSubtipo.getText().equals("B") || !txtSubtipo.getText().equals("A") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("T")){
+						 if(!txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("S") || !txtSubtipo.getText().equals("P") || !txtSubtipo.getText().equals("F") || !txtSubtipo.getText().equals("A") || !txtSubtipo.getText().equals("G") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("F")){
+						 if(!txtSubtipo.getText().equals("R") || !txtSubtipo.getText().equals("S") || !txtSubtipo.getText().equals("M") || !txtSubtipo.getText().equals("E") || !txtSubtipo.getText().equals("H") || !txtSubtipo.getText().equals("L") || !txtSubtipo.getText().equals("P") || !txtSubtipo.getText().equals("V") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("I")){
+						 if(!txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("F") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("H")){
+						 if(!txtSubtipo.getText().equals("F") || !txtSubtipo.getText().equals("P") || !txtSubtipo.getText().equals("E") || !txtSubtipo.getText().equals("T") || !txtSubtipo.getText().equals("A") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("A")){
+						 if(!txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("M") || !txtSubtipo.getText().equals("R") || !txtSubtipo.getText().equals("V") || !txtSubtipo.getText().equals("D") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							JOptionPane.showMessageDialog(this, "Tudo certo!");	
+						 }else {
+								JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else if(txtTipo.getText().equals("C")){
+						 if(!txtSubtipo.getText().equals("C") || !txtSubtipo.getText().equals("B") || !txtSubtipo.getText().equals("N") || !txtSubtipo.getText().equals("Q")) {
+							 JOptionPane.showMessageDialog(this, "Tudo certo!");
+						 }else {
+							JOptionPane.showMessageDialog(this, "Subtipo inválido");
+						 }
+					}else{
+						JOptionPane.showMessageDialog(this, "Tipo inválido");
+					}
+	} else {JOptionPane.showMessageDialog(this, "Tipo inválido");
+            
+        }
+	}else{
+		JOptionPane.showMessageDialog(this, "Todos os campos são obrigatórios!");
+		return;
+	}
+	}
     private void onSaveVagao() {
         Vagao vagao = new Vagao();
-
-        if (txtTipo.getText().length() > 0 && txtSubtipo.getText().length() > 0 && txtBitola.getText().length() > 0) {
-            vagao.setTipo(txtTipo.getText());
-            vagao.setSubtipo(txtSubtipo.getText());
-            vagao.setBitola(txtBitola.getText());
-            vagao.setBitolaMetro(txtBitolaMetro.getText());
-            vagao.setComprimento(txtComprimento.getText());
-            vagao.setPesoMax(txtPesoMax.getText());
-            vagao.setProprietario(txtProprietario.getText());
-        } else {
-            JOptionPane.showMessageDialog(this, "Todos os campos são obrigatórios!");
-            return;
-        }
-
-        int result = 0;
+      	vagao.setTipo(txtTipo.getText());
+		vagao.setSubtipo(txtSubtipo.getText());
+		vagao.setBitola(txtBitola.getText());
+		vagao.setBitolaMetro(txtBitolaMetro.getText());
+		vagao.setComprimento(txtComprimento.getText());
+		vagao.setPesoMax(txtPesoMax.getText());
+		vagao.setProprietario(txtProprietario.getText());
+		int result = 0;
         if (idVagao == null) {
             result = new VagaoController().addVagao(vagao);
         } else {

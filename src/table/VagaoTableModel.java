@@ -8,13 +8,6 @@ import entity.Vagao;
 
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 02:01
- * http://www.mballem.com/
- */
 public class VagaoTableModel extends AbstractTableModel {
 
     private static final int COL_ID = 0;

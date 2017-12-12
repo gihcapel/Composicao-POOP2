@@ -8,19 +8,16 @@ import entity.Locomotiva;
 
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 02:01
- * http://www.mballem.com/
- */
 public class LocomotivaTableModel extends AbstractTableModel {
 
     private static final int COL_ID = 0;
-    private static final int COL_EDITORA = 1;
-    private static final int COL_TITULO = 2;
-    private static final int COL_ISBN = 3;
+    private static final int COL_CLASSE = 1;
+    private static final int COL_DESCRICAO = 2;
+    private static final int COL_PESOMAXREBOC = 3;
+    private static final int COL_PESOMAXLOC = 4;
+    private static final int COL_BITOLA = 5;
+    private static final int COL_COMPRIMENTO = 6;
+
 
     private List<Locomotiva> valores;
 
@@ -33,19 +30,25 @@ public class LocomotivaTableModel extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return 4;
+        return 7;
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         Locomotiva Locomotiva = valores.get(rowIndex);
         if (columnIndex == COL_ID) {
             return Locomotiva.getId();
-        } else if (columnIndex == COL_EDITORA) {
-            return Locomotiva.getEditora();
-        } else if (columnIndex == COL_TITULO) {
-            return Locomotiva.getTitulo();
-        } else if (columnIndex == COL_ISBN) {
-            return Locomotiva.getIsbn();
+        } else if (columnIndex == COL_CLASSE) {
+            return Locomotiva.getClasse();
+        } else if (columnIndex == COL_DESCRICAO) {
+            return Locomotiva.getDescricao();
+        } else if (columnIndex == COL_PESOMAXREBOC) {
+            return Locomotiva.getPesoMaxRebocavel();
+        } else if (columnIndex == COL_PESOMAXLOC) {
+            return Locomotiva.getPesoMaxLoc();
+        }else if (columnIndex == COL_BITOLA) {
+            return Locomotiva.getBitolaLoc();
+        } else if (columnIndex == COL_COMPRIMENTO) {
+            return Locomotiva.getComprimentoLoc();
         }
         return null;
     }
@@ -55,19 +58,28 @@ public class LocomotivaTableModel extends AbstractTableModel {
         String coluna = "";
         switch (column) {
             case COL_ID:
-                coluna = "CÃ³digo";
+                coluna = "Código";
                 break;
-            case COL_EDITORA:
-                coluna = "Editora";
+            case COL_CLASSE:
+                coluna = "Classe";
                 break;
-            case COL_TITULO:
-                coluna = "TÃ­tulo";
+            case COL_DESCRICAO:
+                coluna = "Descrição";
                 break;
-            case COL_ISBN:
-                coluna = "ISBN";
+            case COL_PESOMAXREBOC:
+                coluna = "PESO";
+                break;
+            case COL_PESOMAXLOC:
+                coluna = "PESOLOC";
+                break;
+            case COL_BITOLA:
+                coluna = "BITOLA";
+                break;
+            case COL_COMPRIMENTO:
+                coluna = "COMPRIMENTO";
                 break;
             default:
-                throw new IllegalArgumentException("Coluna invÃ¡lida!");
+                throw new IllegalArgumentException("Coluna inválida!");
         }
         return coluna;
     }
@@ -76,11 +88,20 @@ public class LocomotivaTableModel extends AbstractTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         if (columnIndex == COL_ID) {
             return Long.class;
-        } else if (columnIndex == COL_EDITORA) {
+        } else if (columnIndex == COL_CLASSE) {
             return String.class;
-        } else if (columnIndex == COL_TITULO) {
+        } else if (columnIndex == COL_DESCRICAO) {
             return String.class;
-        } else if (columnIndex == COL_ISBN) {
+        } else if (columnIndex == COL_PESOMAXREBOC) {
+            return String.class;
+        }
+        else if (columnIndex == COL_PESOMAXLOC) {
+            return String.class;
+        }
+        else if (columnIndex == COL_BITOLA) {
+            return String.class;
+        }
+        else if (columnIndex == COL_COMPRIMENTO) {
             return String.class;
         }
         return null;

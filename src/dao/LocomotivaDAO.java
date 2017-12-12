@@ -11,10 +11,10 @@ import entity.Locomotiva;
 public class LocomotivaDAO implements ILocomotivaDAO {
 
     private static final String SQL_INSERT =
-            "insert into locomotivas (EDITORA, TITULO, ISBN) values (?,?,?)";
+            "insert into locomotivas (classe, descricao, pesomaxreboc, pesomaxloc, bitola, comprimento) values (?,?,?,?,?,?)";
 
     private static final String SQL_UPDATE =
-            "update locomotivas set EDITORA = ?, TITULO = ?, ISBN = ? where ID = ?";
+            "update locomotivas set classe = ?, descricao = ?, pesomaxreboc = ?, pesomaxloc =?, bitolaloc=?, comprimentoloc=? where ID = ?";
 
     private static final String SQL_REMOVE =
             "delete from locomotivas where ID = ?";
@@ -29,9 +29,12 @@ public class LocomotivaDAO implements ILocomotivaDAO {
         int result = 0;
         try {
             pstm = conn.prepareStatement(SQL_INSERT);
-            pstm.setString(1, locomotiva.getEditora());
-            pstm.setString(2, locomotiva.getTitulo());
-            pstm.setString(3, locomotiva.getIsbn());
+            pstm.setString(1, locomotiva.getClasse());
+            pstm.setString(2, locomotiva.getDescricao());
+            pstm.setString(3, locomotiva.getPesoMaxRebocavel());
+            pstm.setString(4, locomotiva.getPesoMaxLoc());
+            pstm.setString(5, locomotiva.getBitolaLoc());
+            pstm.setString(6, locomotiva.getComprimentoLoc());
             result = pstm.executeUpdate();
         } catch (SQLException e) {
             try {
@@ -54,10 +57,13 @@ public class LocomotivaDAO implements ILocomotivaDAO {
         int result = 0;
         try {
             pstm = conn.prepareStatement(SQL_UPDATE);
-            pstm.setString(1, locomotiva.getEditora());
-            pstm.setString(2, locomotiva.getTitulo());
-            pstm.setString(3, locomotiva.getIsbn());
-            pstm.setLong(4, locomotiva.getId());
+            pstm.setString(1, locomotiva.getClasse());
+            pstm.setString(2, locomotiva.getDescricao());
+            pstm.setString(3, locomotiva.getPesoMaxRebocavel());
+            pstm.setString(4, locomotiva.getPesoMaxLoc());
+            pstm.setString(5, locomotiva.getBitolaLoc());
+            pstm.setString(6, locomotiva.getComprimentoLoc());
+            pstm.setLong(7, locomotiva.getId());
             result = pstm.executeUpdate();
         } catch (SQLException e) {
             try {
@@ -107,12 +113,14 @@ public class LocomotivaDAO implements ILocomotivaDAO {
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Locomotiva locomotiva = new Locomotiva();
-                locomotiva.setId(rs.getLong("ID"));
-                locomotiva.setEditora(rs.getString("EDITORA"));
-                locomotiva.setTitulo(rs.getString("TITULO"));
-                locomotiva.setIsbn(rs.getString("ISBN"));
-
-                locomotivas.add(locomotiva);
+                locomotiva.setId(rs.getLong("id"));
+                locomotiva.setClasse(rs.getString("classe"));
+                locomotiva.setDescricao(rs.getString("descricao"));
+                locomotiva.setPesoMaxRebocavel(rs.getString("pesomaxreboc"));
+                locomotiva.setPesoMaxLoc(rs.getString("pesomaxloc"));
+                locomotiva.setBitolaLoc(rs.getString("bitola"));
+                locomotiva.setComprimentoLoc(rs.getString("comprimento"));
+      locomotivas.add(locomotiva);
             }
         } catch (SQLException e) {
             try {

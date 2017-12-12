@@ -16,13 +16,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 02:15
- * http://www.mballem.com/
- */
 public class VagaoForm extends JFrame {
 
     private JLabel lbTipo, lbSubtipo, lbBitola, lbBitolaMetro, lbComprimento, lbPesoMax, lbProprietario;

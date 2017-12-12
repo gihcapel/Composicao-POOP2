@@ -16,17 +16,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 02:15
- * http://www.mballem.com/
- */
 public class LocomotivaForm extends JFrame {
 
-    private JLabel lbEditora, lbTitulo, lbIsbn;
-    private JTextField txtEditora, txtTitulo, txtIsbn;
+    private JLabel lbClasse, lbDescricao,  lbPesoMaxReboc,  lbPesoMaxLoc, lbBitola, lbComprimento;
+    private JTextField txtClasse, txtDescricao, txtPesoMaxReboc, txtPesoMaxLoc, txtBitola, txtComprimento;
     private JPanel panelAdd, panelTable, panelButtons;
     private JButton btnNew, btnSave, btnUpdate, btnRemove, btnCancel;
     private JTable table;
@@ -46,31 +39,50 @@ public class LocomotivaForm extends JFrame {
 
         panelAdd = new JPanel(new MigLayout());
         panelAdd.setBorder(BorderFactory.createTitledBorder("Adicionar Locomotivas"));
-        panelAdd.setBounds(5, 0, 480, 100);
+        panelAdd.setBounds(5, 0, 480, 200);
 
-        lbEditora = new JLabel("Editora");
-        lbTitulo = new JLabel("Título");
-        lbIsbn = new JLabel("ISBN");
+        lbClasse = new JLabel("Classe");
+        lbDescricao = new JLabel("Descricao");
+        lbPesoMaxReboc = new JLabel("Peso Max Rebocavel");
+        lbPesoMaxLoc= new JLabel ("Peso Max Loc:");
+        lbBitola = new JLabel("Bitola (m):");
+        lbComprimento = new JLabel("Comprimento:");
+        
+        
 
-        txtEditora = new JTextField(50);
-        txtTitulo = new JTextField(50);
-        txtIsbn = new JTextField(15);
+        txtClasse = new JTextField(50);
+        txtDescricao = new JTextField(50);
+        txtBitola = new JTextField(50);
+        txtPesoMaxReboc= new JTextField(50);;
+        txtPesoMaxLoc = new JTextField(50);;
+        txtComprimento = new JTextField(50);;
+       
+        panelAdd.add(lbClasse);
+        panelAdd.add(txtClasse, "span, growx");
 
-        panelAdd.add(lbEditora);
-        panelAdd.add(txtEditora, "span, growx");
+        panelAdd.add(lbDescricao);
+        panelAdd.add(txtDescricao, "span, growx");
+        
+        panelAdd.add(lbPesoMaxReboc);
+        panelAdd.add(txtPesoMaxReboc, "span, growx");
+        
+        panelAdd.add(lbPesoMaxLoc);
+        panelAdd.add(txtPesoMaxLoc, "span, growx");
 
-        panelAdd.add(lbTitulo);
-        panelAdd.add(txtTitulo, "span, growx");
-
-        panelAdd.add(lbIsbn);
-        panelAdd.add(txtIsbn, "growx");
+        panelAdd.add(lbBitola);
+        panelAdd.add(txtBitola, "growx");
+        
+        
+        panelAdd.add(lbComprimento);
+        panelAdd.add(txtComprimento, "span, growx");
+        
 
         nLocomotivas = new JLabel("0");
         panelAdd.add(nLocomotivas, "wrap para");
 
         panelButtons = new JPanel(new MigLayout());
         panelButtons.setBorder(BorderFactory.createEtchedBorder());
-        panelButtons.setBounds(5, 105, 480, 40);
+        panelButtons.setBounds(5, 205, 480, 40);
 
        
         btnNew = new JButton("NOVO");
@@ -79,7 +91,7 @@ public class LocomotivaForm extends JFrame {
         btnRemove = new JButton("Remover");
         btnUpdate = new JButton("Atualizar");
 
-        panelButtons.add(btnNew, "gapleft 90");
+        panelButtons.add(btnNew, "gapleft 10");
         panelButtons.add(btnCancel);
         panelButtons.add(btnSave, "gap unrelated");
         panelButtons.add(btnUpdate, "gap unrelated");
@@ -87,7 +99,7 @@ public class LocomotivaForm extends JFrame {
 
         panelTable = new JPanel(new MigLayout());
         panelTable.setBorder(BorderFactory.createTitledBorder("Lista de Locomotivas"));
-        panelTable.setBounds(5, 150, 480, 240);
+        panelTable.setBounds(5, 250, 480, 240);
 
         table = new JTable();
 
@@ -101,7 +113,7 @@ public class LocomotivaForm extends JFrame {
         add(panelAdd);
         add(panelButtons);
         add(panelTable);
-        setMinimumSize(new Dimension(500,420));
+        setMinimumSize(new Dimension(500,600));
         setVisible(true);
 
         btnSave.addActionListener(new ActionListener() {
@@ -169,14 +181,16 @@ public class LocomotivaForm extends JFrame {
             return;
         }
 
-        Locomotiva Locomotiva = new LocomotivaTableModel(LocomotivaList).get(rowIndex);
+        Locomotiva locomotiva = new LocomotivaTableModel(LocomotivaList).get(rowIndex);
 
-        idLocomotiva = Locomotiva.getId();
+        idLocomotiva = locomotiva.getId();
 
-        txtEditora.setText(Locomotiva.getEditora());
-        txtTitulo.setText(Locomotiva.getTitulo());
-        txtIsbn.setText(Locomotiva.getIsbn());
-
+        txtClasse.setText(locomotiva.getClasse());
+        txtDescricao.setText(locomotiva.getDescricao());
+        txtBitola.setText(locomotiva.getBitolaLoc());
+        txtPesoMaxReboc.setText(locomotiva.getPesoMaxRebocavel());
+        txtComprimento.setText(locomotiva.getComprimentoLoc());
+        txtPesoMaxLoc.setText(locomotiva.getPesoMaxLoc());
         enableFields(true);
     }
 
@@ -185,12 +199,15 @@ public class LocomotivaForm extends JFrame {
     }
 
     private void onSaveLocomotiva() {
-        Locomotiva Locomotiva = new Locomotiva();
+        Locomotiva locomotiva = new Locomotiva();
 
-        if (txtEditora.getText().length() > 0 && txtTitulo.getText().length() > 0 && txtIsbn.getText().length() > 0) {
-            Locomotiva.setEditora(txtEditora.getText());
-            Locomotiva.setTitulo(txtTitulo.getText());
-            Locomotiva.setIsbn(txtIsbn.getText());
+        if (txtClasse.getText().length() > 0 && txtDescricao.getText().length() > 0 && txtBitola.getText().length() > 0) {
+            locomotiva.setClasse(txtClasse.getText());
+            locomotiva.setDescricao(txtDescricao.getText());
+            locomotiva.setBitolaLoc(txtBitola.getText());
+            locomotiva.setPesoMaxRebocavel(txtPesoMaxReboc.getText());
+            locomotiva.setComprimentoLoc(txtComprimento.getText());
+            locomotiva.setPesoMaxLoc(txtPesoMaxLoc.getText());
         } else {
             JOptionPane.showMessageDialog(this, "Todos os campos são obrigatórios!");
             return;
@@ -198,10 +215,10 @@ public class LocomotivaForm extends JFrame {
 
         int result = 0;
         if (idLocomotiva == null) {
-            result = new LocomotivaController().addLocomotiva(Locomotiva);
+            result = new LocomotivaController().addLocomotiva(locomotiva);
         } else {
-            Locomotiva.setId(idLocomotiva);
-            result = new LocomotivaController().alterarLocomotiva(Locomotiva);
+            locomotiva.setId(idLocomotiva);
+            result = new LocomotivaController().alterarLocomotiva(locomotiva);
             idLocomotiva = null;
         }
 
@@ -216,16 +233,23 @@ public class LocomotivaForm extends JFrame {
     }
 
     private void onCancelar() {
-        txtEditora.setText("");
-        txtTitulo.setText("");
-        txtIsbn.setText("");
+        txtClasse.setText("");
+        txtDescricao.setText("");
+        txtBitola.setText("");
+        txtPesoMaxReboc.setText("");
+        txtComprimento.setText("");
+        txtPesoMaxLoc.setText("");
         enableFields(false);
     }
 
     private void enableFields(boolean b) {
-        txtEditora.setEnabled(b);
-        txtTitulo.setEnabled(b);
-        txtIsbn.setEnabled(b);
+    	txtClasse.setEnabled(b);
+        txtDescricao.setEnabled(b);
+        txtBitola.setEnabled(b);
+        txtPesoMaxReboc.setEnabled(b);
+        txtComprimento.setEnabled(b);
+        txtPesoMaxLoc.setEnabled(b);
+       
     }
 
     private void refreshTable() {

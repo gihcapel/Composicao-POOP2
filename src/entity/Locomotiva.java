@@ -2,49 +2,54 @@ package entity;
 
 public class Locomotiva {
     private Long id;
-    private String editora;
-    private String titulo;
-    private String isbn;
+    private String classe, descricao, pesoMaxRebocavel , pesoMaxLoc, bitolaLoc, comprimentoLoc;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getClasse() {
+		return classe;
+	}
+	public void setClasse(String classe) {
+		this.classe = classe;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public String getPesoMaxRebocavel() {
+		return pesoMaxRebocavel;
+	}
+	public void setPesoMaxRebocavel(String pesoMaxRebocavel) {
+		this.pesoMaxRebocavel = pesoMaxRebocavel;
+	}
+	public String getPesoMaxLoc() {
+		return pesoMaxLoc;
+	}
+	public void setPesoMaxLoc(String pesoMaxLoc) {
+		this.pesoMaxLoc = pesoMaxLoc;
+	}
+	public String getBitolaLoc() {
+		return bitolaLoc;
+	}
+	public void setBitolaLoc(String bitolaLoc) {
+		this.bitolaLoc = bitolaLoc;
+	}
+	public String getComprimentoLoc() {
+		return comprimentoLoc;
+	}
+	public void setComprimentoLoc(String comprimentoLoc) {
+		this.comprimentoLoc = comprimentoLoc;
+	}
+	public Locomotiva() {
+}
+    
+    
+ 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    @Override
-    public String toString() {
-        return "Locomotiva{" +
-                "id=" + id +
-                ", editora='" + editora + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", isbn='" + isbn + '\'' +
-                '}';
-    }
+   
 }

@@ -5,13 +5,6 @@ import java.util.List;
 import entity.Locomotiva;
 import facade.LocomotivaFacade;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 01:44
- * http://www.mballem.com/
- */
 public class LocomotivaController {
 
     private LocomotivaFacade facade;

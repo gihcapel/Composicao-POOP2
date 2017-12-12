@@ -1,7 +1,4 @@
 package dao;
-
-
-
 import java.sql.*;
 
 public class Connect {
@@ -57,11 +54,14 @@ public class Connect {
                 "  PRIMARY KEY (`ID`)\n" +
                 ")";
         String sql2= "CREATE TABLE IF NOT EXISTS `locomotivas` (\n" +
-                "  `ID` bigint(20) NOT NULL AUTO_INCREMENT,\n" +
-                "  `EDITORA` varchar(50) NOT NULL,\n" +
-                "  `TITULO` varchar(50) NOT NULL,\n" +
-                "  `ISBN` varchar(50) NOT NULL,\n" +
-                "  PRIMARY KEY (`ID`)\n" +
+                "  `id` bigint(20) NOT NULL AUTO_INCREMENT,\n" +
+                "  `classe` varchar(50) NOT NULL,\n" +
+                "  `descricao` varchar(50) NOT NULL,\n" +
+                "  `pesomaxreboc` varchar(50) NOT NULL,\n" +
+                "  `pesomaxloc` varchar(50) NOT NULL,\n" +
+                "  `bitola` varchar(50) NOT NULL,\n" +
+                "  `comprimento` varchar(50) NOT NULL,\n" +
+                "  PRIMARY KEY (`id`)\n" +
                 ")";
         try {
             stmt = connection.prepareStatement(sql);

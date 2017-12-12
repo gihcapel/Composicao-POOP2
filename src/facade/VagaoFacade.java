@@ -8,13 +8,6 @@ import dao.IVagaoDAO;
 import dao.VagaoDAO;
 import entity.Vagao;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 01:41
- * http://www.mballem.com/
- */
 public class VagaoFacade {
 
     private IVagaoDAO dao;

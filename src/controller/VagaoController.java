@@ -5,13 +5,7 @@ import java.util.List;
 import entity.Vagao;
 import facade.VagaoFacade;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Marcio Ballem
- * Date: 31/03/13
- * Time: 01:44
- * http://www.mballem.com/
- */
+
 public class VagaoController {
 
     private VagaoFacade facade;

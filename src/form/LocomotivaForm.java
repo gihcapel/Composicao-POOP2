@@ -1,6 +1,5 @@
 package form;
 
-
 import net.miginfocom.swing.MigLayout;
 import table.LocomotivaCellRenderer;
 import table.LocomotivaTableModel;
@@ -16,106 +15,123 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Agnes Travalon, Ana Carolina Lopes, Giovanna Capel e Pedro de Souza Moraes
+ * 
+ * Classe de formulário da locomotiva
+ */
 public class LocomotivaForm extends JFrame {
 
-    private JLabel lbClasse, lbDescricao,  lbPesoMaxReboc,  lbPesoMaxLoc, lbBitola, lbComprimento;
+    private JLabel lbClasse, lbDescricao, lbPesoMaxReboc, lbPesoMaxLoc, lbBitola, lbComprimento;
     private JTextField txtClasse, txtDescricao, txtPesoMaxReboc, txtPesoMaxLoc, txtBitola, txtComprimento;
     private JPanel panelAdd, panelTable, panelButtons;
     private JButton btnNew, btnSave, btnUpdate, btnRemove, btnCancel;
     private JTable table;
     private JScrollPane scrollPane;
-
     private JLabel nLocomotivas;
-
     private List<Locomotiva> LocomotivaList;
     private Long idLocomotiva;
 
+    //Construtor da janela de cadastro de locomotivas
     public LocomotivaForm() throws HeadlessException {
         super("Cadastro de Locomotivas");
+
+        //Propriedades da janela como botão para fechar e redimensionamento
         setContentPane(new JPanel());
         setLayout(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //Criação do painel e características como título, tamanho e posição
         panelAdd = new JPanel(new MigLayout());
         panelAdd.setBorder(BorderFactory.createTitledBorder("Adicionar Locomotivas"));
         panelAdd.setBounds(5, 0, 480, 200);
 
+        //Título das labels
         lbClasse = new JLabel("Classe");
         lbDescricao = new JLabel("Descricao");
         lbPesoMaxReboc = new JLabel("Peso Max Rebocavel");
-        lbPesoMaxLoc= new JLabel ("Peso Max Loc:");
+        lbPesoMaxLoc = new JLabel("Peso Max Loc:");
         lbBitola = new JLabel("Bitola (m):");
         lbComprimento = new JLabel("Comprimento:");
-        
-        
 
+        //Campo de texto, com capacidade máxima de 50 caracteres
         txtClasse = new JTextField(50);
         txtDescricao = new JTextField(50);
         txtBitola = new JTextField(50);
-        txtPesoMaxReboc= new JTextField(50);;
-        txtPesoMaxLoc = new JTextField(50);;
-        txtComprimento = new JTextField(50);;
-       
+        txtPesoMaxReboc = new JTextField(50);
+        txtPesoMaxLoc = new JTextField(50);
+        txtComprimento = new JTextField(50);
+
+        //Todas as labels e campos de texto são adicionados ao painel
         panelAdd.add(lbClasse);
         panelAdd.add(txtClasse, "span, growx");
 
         panelAdd.add(lbDescricao);
         panelAdd.add(txtDescricao, "span, growx");
-        
+
         panelAdd.add(lbPesoMaxReboc);
         panelAdd.add(txtPesoMaxReboc, "span, growx");
-        
+
         panelAdd.add(lbPesoMaxLoc);
         panelAdd.add(txtPesoMaxLoc, "span, growx");
 
         panelAdd.add(lbBitola);
         panelAdd.add(txtBitola, "growx");
-        
-        
+
         panelAdd.add(lbComprimento);
         panelAdd.add(txtComprimento, "span, growx");
-        
 
         nLocomotivas = new JLabel("0");
         panelAdd.add(nLocomotivas, "wrap para");
 
+        //Painel de botões é criado com características como título, tamanho e posição
         panelButtons = new JPanel(new MigLayout());
         panelButtons.setBorder(BorderFactory.createEtchedBorder());
         panelButtons.setBounds(5, 205, 480, 40);
 
-       
+        //Botões são criados
         btnNew = new JButton("NOVO");
         btnSave = new JButton("Salvar");
         btnCancel = new JButton("Cancelar");
         btnRemove = new JButton("Remover");
         btnUpdate = new JButton("Atualizar");
 
+        //Botões são adicionados ao painel
         panelButtons.add(btnNew, "gapleft 10");
         panelButtons.add(btnCancel);
         panelButtons.add(btnSave, "gap unrelated");
         panelButtons.add(btnUpdate, "gap unrelated");
         panelButtons.add(btnRemove);
 
+        //Painel da tabela de vagões é criado com características como título, tamanho e posição
         panelTable = new JPanel(new MigLayout());
         panelTable.setBorder(BorderFactory.createTitledBorder("Lista de Locomotivas"));
         panelTable.setBounds(5, 250, 480, 240);
 
+        //Nova tabela
         table = new JTable();
 
+        //Barra de rolagem
         scrollPane = new JScrollPane(table);
 
+        //Barra de rolagem é adicionada ao painel
         panelTable.add(scrollPane);
 
         refreshTable();
         enableFields(false);
 
+        //Adiciona os paineis de botão e de tabela ao painel principal
         add(panelAdd);
         add(panelButtons);
         add(panelTable);
-        setMinimumSize(new Dimension(500,600));
+
+        //Insere a dimensão da janela e visibilidade
+        setMinimumSize(new Dimension(500, 600));
         setVisible(true);
 
+        //Métodos que adicionam evento aos botões
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onSaveLocomotiva();
@@ -147,6 +163,7 @@ public class LocomotivaForm extends JFrame {
         });
     }
 
+    //Método para remover alguma locomotiva previamente adicionada
     private void onRemoverLocomotiva() {
         int rowIndex = table.getSelectedRow();
 
@@ -173,6 +190,7 @@ public class LocomotivaForm extends JFrame {
         }
     }
 
+    //Método para alterar alguma locomotiva previamente adicionada
     private void onAlterarLocomotiva() {
         int rowIndex = table.getSelectedRow();
 
@@ -194,10 +212,12 @@ public class LocomotivaForm extends JFrame {
         enableFields(true);
     }
 
+    //Método para adicionar nova locomotiva
     private void onNovoLocomotiva() {
         enableFields(true);
     }
 
+    //Método para salvar a locomotiva adicionada
     private void onSaveLocomotiva() {
         Locomotiva locomotiva = new Locomotiva();
 
@@ -232,6 +252,7 @@ public class LocomotivaForm extends JFrame {
         }
     }
 
+    //Método para cancelar a adição de uma nova locomotiva
     private void onCancelar() {
         txtClasse.setText("");
         txtDescricao.setText("");
@@ -242,16 +263,18 @@ public class LocomotivaForm extends JFrame {
         enableFields(false);
     }
 
+    //Método para habilitar os campos de texto para digitação
     private void enableFields(boolean b) {
-    	txtClasse.setEnabled(b);
+        txtClasse.setEnabled(b);
         txtDescricao.setEnabled(b);
         txtBitola.setEnabled(b);
         txtPesoMaxReboc.setEnabled(b);
         txtComprimento.setEnabled(b);
         txtPesoMaxLoc.setEnabled(b);
-       
+
     }
 
+    //Método para atualizar a tabela e mostrar as novas adições, remoções ou alterações
     private void refreshTable() {
         LocomotivaList = new LocomotivaController().findlocomotivas();
         nLocomotivas.setText(String.valueOf(LocomotivaList.size()));
